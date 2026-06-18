@@ -147,7 +147,9 @@ funcao = st.text_input("Função / Cargo", "", key="funcao_vazio")
 setor = st.text_input("Departamento / Setor", "", key="setor_vazio")
 email = st.text_input("E-mail", "", key="email_vazio")
 telefone = st.text_input("Telefone", "", key="telefone_vazio")
-site = st.text_input("Site", "", key="site_vazio")
+
+# O site já vem preenchido por padrão, conforme solicitado.
+site = st.text_input("Site", "www.ifsp.edu.br", key="site_padrao_ifsp")
 
 
 def gerar_assinatura():
@@ -170,7 +172,6 @@ def gerar_assinatura():
     telefone_final = telefone.strip()
     site_final = site.strip()
 
-    # Nome forte, mas sem empurrar função/setor para cima.
     fonte_nome = fonte_ajustada(draw, nome_final, 560, 58, 38, FONTE_NOME)
     fonte_funcao = fonte_ajustada(draw, funcao_final, 360, 30, 22, FONTE_TEXTO_FORTE)
     fonte_setor = fonte_ajustada(draw, setor_final, 390, 24, 18, FONTE_TEXTO)
@@ -182,11 +183,11 @@ def gerar_assinatura():
     if nome_final:
         desenhar_texto_forte(draw, (313, 30), nome_final, fonte_nome, azul)
 
-    # Ajuste: estes textos estavam altos demais. Agora ficam abaixo do nome, sem sobrepor.
+    # Ajuste fino: função/setor subiram um pouco em relação à versão anterior.
     if funcao_final:
-        draw.text((313, 100), funcao_final, font=fonte_funcao, fill=verde)
+        draw.text((313, 94), funcao_final, font=fonte_funcao, fill=verde)
     if setor_final:
-        draw.text((313, 132), setor_final, font=fonte_setor, fill=cinza)
+        draw.text((313, 124), setor_final, font=fonte_setor, fill=cinza)
 
     # Contatos alinhados verticalmente com os ícones.
     if email_final:
