@@ -131,11 +131,13 @@ def fonte_ajustada(draw: ImageDraw.ImageDraw, texto: str, largura_max: int, inic
 def desenhar_texto_forte(draw, pos, texto, fonte, cor):
     """
     Reforça visualmente o nome sem depender apenas do peso da fonte.
-    Desenha uma cópia deslocada 1 px para dar efeito de negrito.
+    Desenha múltiplas cópias deslocadas para dar efeito de negrito.
     """
     x, y = pos
     draw.text((x, y), texto, font=fonte, fill=cor)
     draw.text((x + 1, y), texto, font=fonte, fill=cor)
+    draw.text((x, y + 1), texto, font=fonte, fill=cor)
+    draw.text((x + 1, y + 1), texto, font=fonte, fill=cor)
 
 
 def desenhar_texto_centralizado_vertical(draw, x, centro_y, texto, fonte, cor):
@@ -176,7 +178,7 @@ def gerar_assinatura():
     site_final = site.strip()
 
     # Fontes mais fortes e maiores.
-    fonte_nome = fonte_ajustada(draw, nome_final, 560, 56, 36, FONTE_NOME)
+    fonte_nome = fonte_ajustada(draw, nome_final, 560, 60, 42, FONTE_NOME)
     fonte_funcao = fonte_ajustada(draw, funcao_final, 360, 30, 22, FONTE_TEXTO_FORTE)
     fonte_setor = fonte_ajustada(draw, setor_final, 390, 24, 18, FONTE_TEXTO)
     fonte_email = fonte_ajustada(draw, email_final, 365, 18, 13, FONTE_TEXTO)
@@ -187,18 +189,18 @@ def gerar_assinatura():
     if nome_final:
         desenhar_texto_forte(draw, (313, 34), nome_final, fonte_nome, azul)
     if funcao_final:
-        draw.text((313, 90), funcao_final, font=fonte_funcao, fill=verde)
+        draw.text((313, 78), funcao_final, font=fonte_funcao, fill=verde)
     if setor_final:
-        draw.text((313, 124), setor_final, font=fonte_setor, fill=cinza)
+        draw.text((313, 112), setor_final, font=fonte_setor, fill=cinza)
 
     # Contatos alinhados verticalmente com os ícones.
     # Centros aproximados dos ícones no template original.
     if email_final:
         desenhar_texto_centralizado_vertical(draw, 352, 174, email_final, fonte_email, cinza)
     if telefone_final:
-        desenhar_texto_centralizado_vertical(draw, 352, 218, telefone_final, fonte_telefone, cinza)
+        desenhar_texto_centralizado_vertical(draw, 352, 214, telefone_final, fonte_telefone, cinza)
     if site_final:
-        desenhar_texto_centralizado_vertical(draw, 352, 260, site_final, fonte_site, cinza)
+        desenhar_texto_centralizado_vertical(draw, 352, 254, site_final, fonte_site, cinza)
 
     return img
 
