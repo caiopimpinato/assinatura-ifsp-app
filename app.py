@@ -129,12 +129,12 @@ def fonte_ajustada(draw: ImageDraw.ImageDraw, texto: str, largura_max: int, inic
     return fonte(minimo, bold=bold)
 
 
-nome = st.text_input("Nome completo", "CAIO ITALO MARCIERI PIMPINATO")
-funcao = st.text_input("Função / Cargo", "Aluno")
-setor = st.text_input("Departamento / Setor", "DEL / Campus São Paulo")
-email = st.text_input("E-mail", "caio.pimpinato@aluno.ifsp.edu.br")
-telefone = st.text_input("Telefone", "(11) 986767015")
-site = st.text_input("Site", "www.ifsp.edu.br")
+nome = st.text_input("Nome completo", "")
+funcao = st.text_input("Função / Cargo", "")
+setor = st.text_input("Departamento / Setor", "")
+email = st.text_input("E-mail", "")
+telefone = st.text_input("Telefone", "")
+site = st.text_input("Site", "")
 
 
 def gerar_assinatura():
@@ -158,9 +158,9 @@ def gerar_assinatura():
     site_final = site.strip()
 
     # Layout com fonte grande, igual ao modelo aprovado.
-    draw.text((313, 38), nome_final, font=fonte_ajustada(draw, nome_final, 540, 48, 34, bold=True), fill=azul)
-    draw.text((313, 88), funcao_final, font=fonte_ajustada(draw, funcao_final, 340, 30, 22, bold=False), fill=verde)
-    draw.text((313, 122), setor_final, font=fonte_ajustada(draw, setor_final, 380, 24, 18, bold=False), fill=cinza)
+    draw.text((313, 30), nome_final, font=fonte_ajustada(draw, nome_final, 560, 62, 46, bold=True), fill=azul)
+    draw.text((313, 92), funcao_final, font=fonte_ajustada(draw, funcao_final, 360, 34, 26, bold=True), fill=verde)
+    draw.text((313, 128), setor_final, font=fonte_ajustada(draw, setor_final, 420, 28, 22, bold=False), fill=cinza)
     draw.line((307, 150, 522, 150), fill=amarelo, width=2)
 
     draw.text((352, 166), email_final, font=fonte_ajustada(draw, email_final, 365, 18, 14), fill=cinza)
